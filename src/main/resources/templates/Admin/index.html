@@ -1,0 +1,85 @@
+<html lang="en">
+    // head starts
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{../css/admin.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+</head>
+<body>
+    <div class="header">
+        <div class="user">
+            <img src="../images/person_1.jpg" alt="">
+            <h2 class="userName">User</h2>
+        </div>
+        <div class="userLeft">
+            <ul>
+                <li>Write</li>
+                <li>logout
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="sidebar" style="height: 100%;">
+        <div class="sideul"><ul>
+            <li class="active">Manage Articles</li>
+            <li>Stats</li>
+            <li>Anouncements</li>
+        </ul></div>
+        
+    </div>
+
+    <div class='main'>
+   
+    <div id='frame' class="viewArticles" style="display: none;">
+        <div class="btn">
+            <button>publish</button>
+            <button>Unpublish</button>
+            <button onclick="
+                document.getElementById('tPosts').style.display = 'block';
+                document.getElementById('frame').style.display = 'none';
+            ">cancel</button>
+        </div>
+        <iframe src="../user/review.html" frameborder="10" width="1300px" height="700px"></iframe>
+    </div>
+    <div id="tPosts">
+        <h1 style="padding: 20px;">Todays Posts</h1>
+        <div class="reviewArticles">
+            <h2 class="headings">Review</h2>
+            <hr style="margin-top: 60px;">
+            
+            <div class="art">
+            <ul>
+                <li onclick="loadArticle(this.Text)"><span class="uName">User1/</span> Work from home <span class="udate">Today</li>
+                <li><span class="uName">User1/</span> Work from home <span class='udate'>Today</li>
+                <li><span class="uName">User1/</span> Work from home <span class='udate'>Today</li>
+                <li><span class="uName">User1/</span> Work from home <span class='udate'>Today</li>
+                <li><span class="uName">User1/</span> Work from home <span class='udate'>Today</li>
+                <li><span class="uName">User1/</span> Work from home <span class='udate'>Today</li>
+                    
+            </ul></div>
+           
+        </div>
+        <div class="published">
+            <h2 class="headings">Published</h2>
+            <hr style="margin-top: 60px;">
+            <ul>
+                <li>How to be a man</li>
+                <li>Work from home</li>
+               
+            </ul>
+        </div>
+        </div>
+        <div class="stats"></div>
+        <div class='Anouncements'></div>
+    </div>
+</body>
+<script>
+    function loadArticle(name){
+        document.getElementById('tPosts').style.display = 'none';
+        document.getElementById('frame').style.display = 'block';
+        document.getElementById('frame').focus();
+       
+    }
+</script>
+</html>

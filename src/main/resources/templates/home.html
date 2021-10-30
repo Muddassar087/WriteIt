@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<style type="text/css">
+	#loginbtn:hover{
+			background-color: lightgrey;
+		}
+		 .loader,
+        .loader:after {
+            border-radius: 50%;
+            width: 10em;
+            height: 10em;
+        }
+        .loader {            
+            margin: 60px auto;
+            font-size: 10px;
+            position: relative;
+            text-indent: -9999em;
+            border-top: 1.1em solid rgba(255, 255, 255, 0.2);
+            border-right: 1.1em solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
+            border-left: 1.1em solid #ffffff;
+            -webkit-transform: translateZ(0);
+            -ms-transform: translateZ(0);
+            transform: translateZ(0);
+            -webkit-animation: load8 1.1s infinite linear;
+            animation: load8 1.1s infinite linear;
+        }
+        @-webkit-keyframes load8 {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+        @keyframes load8 {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+        #loadingDiv {
+            position:absolute;;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background-color:#000;}
+        
+</style>
+<head>
+
+	<link rel="stylesheet" th:href="@{../css/design.css}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script th:inline="javascript">
+		$(document).ready(function(){
+			  $("#find").autocomplete({
+			      source: "/getTitleNames",
+			      minLength: 1
+			  });
+			});
+	</script>
+	<title>Home - Write it</title>
+	
+</head>
+<body>
+	<main id="content">
+	<div class="container">
+		<div class="navbar" id="nav">
+			<h1 class="nameW">WRITE IT</h1>
+			<nav>
+				<ul>
+					<!-- edited by muddassar -->
+					<li><a class='active' th:href="@{/}">Home</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Contact</a></li>
+					<li id="loginbtn" style="
+						cursor:pointer; background: #ff523b; width:70px;height:30px;
+						border-radius:100px; padding-top:10px;
+						text-align: center; color:white;"
+					><a style="color: white" href="/login">login</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+	<div class="header container">
+		<header>
+			<div class="text" style="
+			/*border:1px solid grey;*/
+			">
+				<h1>Write it</h1>
+				<p>Share it with the world Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+				
+				
+				<!--  register button  -->
+				<div class="join" id="btn">
+					<a href='/register' style="text-align: center; padding-left: 35px " >Join Us</a>
+				</div>
+			
+			
+			</div>
+			<div class="image">
+				<img src="images/asset-1.png" width="600px">
+			</div>
+		</header>
+	</div>
+
+			
+		<!-- main -->
+		<div class="container" style="padding-top: 30px;">
+			<div class="content">
+			<h1 style="font-size: 20px; color: grey; text-align: left; margin-left:10%; font-style: italic;">Featured publisher</h1>
+			<div class="row">
+				<div class="col-1" th:each="user:${topUsers}">
+					<a th:href="@{/profile/{user}(user=${user.getName()})}">
+						<img th:src="@{'data:image/jpg;base64,'+${user.getPic()}}" width="100px"/>
+						<h5 th:text=${user.getName()}></h5>
+					</a>
+				</div>
+				<div style="border-right: 1px solid grey;
+    				height: 163px;"></div>
+				
+				<div class="col-1"></div>
+
+				<div class="col-2">
+					<h4>Search by title:</h4>
+					<form action="/SearchReasult" method="get" style="margin: none;">
+						<input type="text" id="find" name="articleToSearch" placeholder="e.g: 'Programming java'" style="
+						width: 300px;
+						height: 40px; 
+						border:1px solid grey;
+						font-size: 16px;
+						color: grey;
+						font-style: italic;
+						padding-left: 10px;
+						outline-color: pink">
+						<input type="submit" value="SEARCH"
+						style="
+						width: 100px;
+						height: 43px;
+						border: 1px solid pink;
+						outline-color: pink;
+						background: white;
+						color: pink;
+						font-size:16px;
+						font-weight: bold;
+						">
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!-- articales  -->
+		<div class="article">
+			<div class="row" style="
+			max-width:1000px;">
+				<div class="col-3" th:each="article: ${articleList}">
+					<a th:href="@{/home/{title}(title=${article.getTitle()})}">
+						<img alt="asas" th:src="@{'data:image/jpg;base64,' + *{T(org.springframework.util.Base64Utils).encodeToString(article.getTitleImage())}}" width="200px"><br>
+						<span th:text=${article.getTitle()} style="font-weight: bold;"></span><p th:text=${article.getDescription()}></p>
+					</a>
+				</div>
+			</div>
+			<div class="side" style="margin-top:0px;padding-top: 0px;">
+				<div class="related-posts" style="
+				background-color: rgb(246, 246, 246);">
+					<h1>Related Posts</h1>
+					<div class="posts" th:each="recentA:${recent}">
+						<img th:src="@{'data:image/jpg;base64,' +${recentA.getPic()}}" width="100px">
+						<a th:href="@{/home/{title}(title=${recentA.getName()})}" style="padding-top:40px;" th:text=${recentA.getName()}></a>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+
+		<div class="NP">
+			<div class="nextPages" style="height: 50px; max-width: 500px; padding-left: 50px; margin: 0; ">
+				<ul style="display: inline-block;">
+					<li style="margin-left:200px; border: 2px solid red; background-color: red; color: white"><a style="color: white;" th:href=@{/home/All-Articles}>More &#8594; </a></li>
+				</ul>
+				</div>	
+			</div>
+			
+		</div>
+
+		<div class="footer">
+			<div class="container">
+				<div class="row">
+					<div class="footer-col-1">
+						<h3>Download Our App</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+					</div>
+					<div class="footer-col-2">
+						<h1 class="nameW">WRITE IT</h1>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+					</div>
+					<div class="footer-col-3">
+						<h3 style="text-align: center;">Download Our App</h3>
+						<ul style="list-style-type: none;">
+							<li>Coupons</li>
+							<li>Blog</li>
+							<li>About Us</li>
+						</ul>
+					</div>
+					<div class="footer-col-4">
+						<h3 style="text-align: center;">Follow Us</h3>
+						<ul style="list-style-type: none;">
+							<li>Facebook</li>
+							<li>Instagram</li>
+							<li>Youtube</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<script type="text/javascript">
+		const b = document.getElementsByTagName('body')
+		var button = document.getElementById('btn');
+		var main = document.getElementById('content');
+		var button1 = document.getElementById('close');
+		var nav = document.getElementById('nav');
+		var modal = document.getElementById('f');
+		var a1 = document.getElementsByClassName('col-3');
+		
+		function aa(){
+			modal.style.display = 'block';
+			main.style.background = 'lightgrey';
+			button.style.background = 'grey';
+			nav.style.background = 'lightgrey';
+			
+
+		}
+		function aa1(){
+			modal.style.display = 'none';
+			main.style.background = 'white';
+			nav.style.background = 'white';
+			button.style.background = '#ff523b';
+
+		}
+		
+
+	</script>
+</body>
+</html>

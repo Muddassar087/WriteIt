@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" th:href="@{../css/design.css}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Search for "this"</title>
+</head>
+<body>
+	<div class="container">
+		<div class="navbar">
+			<h1 class="nameW">WRITE IT</h1>
+			<nav>
+				<ul>
+					<li><a style="color: orange;" class='' th:href="@{/User/profile}" th:text={}>Muddassar</a></li>
+					<li><a style="color: orange;" class='' th:href="@{/User/profile/write}">Write</a></li>
+					<li><a class='active' th:href="@{/User/}">Home</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Contact</a></li>
+					<li style="cursor:pointer; background: #ff523b; width:70px;height:30px;
+					border-radius:100px; padding-top:10px;
+					text-align: center; color:white;"><a style="color: white" href="/logout">logout</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+	
+	<!-- out main content -->
+	<div class="wrapper" >
+		<div class="search-result ">
+			<div class="" style="
+			background-color: rgba(0,0,0,0.05);
+			margin-top:10px;
+			/*display: flex;*/
+			/*flex-wrap: wrap;*/
+			/*border:1px solid red;*/ 
+			width: 100%;">
+				<div class="search" style="">
+					<h4 style="
+					color: grey;
+					font-size: 25px;
+					margin-left: 45%">Search by title</h4>
+					<form style="margin: none; margin-left: 32%;">
+						<input type="text" name="" placeholder="e.g: 'Programming java'" style="
+						width: 43%;
+						height: 40px; 
+						border:1px solid grey;
+						font-size: 16px;
+						color: grey;
+						font-style: italic;
+						padding-left: 10px;
+						margin-bottom: 30px;
+						outline-color: pink">
+						<input type="submit" name="" value="SEARCH"
+						style="
+						width: 100px;
+						height: 43px;
+						border: 1px solid pink;
+						outline-color: pink;
+						background: white;
+						color: pink;
+						font-size:16px;
+						font-weight: bold;
+						">
+					</form>
+				</div>
+				<div class="total-search" style="
+				padding-bottom: 10px;">
+					<h1>Search result</h1>
+					<p>No result found for</p>
+					<p>``<strong style="margin-left: 0;">How to unplug charger``</strong>
+					</p>
+				</div>
+				
+			</div>
+			<div class="search-content">
+				<div class="a-col-1">
+					<a href="article.html">
+					<img src="images/img_1.jpg" width="200px">
+					<p><strong>Lorem ipsum:</strong> dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris </p></a>
+					
+					
+				</div>
+				<div class="a-col-1">
+					<a href="article.html"><img src="images/img_5.jpg" width="200px">
+					<p><strong>Lorem ipsum:</strong> dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris </p></a>
+					
+				</div>
+				<div class="a-col-1">
+					<a href="article.html"><img src="images/img_2.jpg" width="200px">
+					<p><strong>Lorem ipsum:</strong> dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris </p></a>
+					
+				</div>
+				<div class="a-col-1">
+					<a href="article.html"><img src="images/img_3.jpg" width="200px">
+					<p><strong>Lorem ipsum:</strong> dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris </p></a>
+					
+				</div>
+				<div class="a-col-1">
+					<a href="article.html"><img src="images/img_4.jpg" width="200px">
+					<p><strong>Lorem ipsum:</strong> dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris </p></a>
+					
+				</div>
+				<div class="a-col-1">
+					<a href="article.html"><img src="images/img_5.jpg" width="200px">
+					<p><strong>Lorem ipsum:</strong> dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris </p></a>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="footer-col-1">
+					<h3>Download Our App</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+				</div>
+				<div class="footer-col-2">
+					<h1 class="nameW">WRITE IT</h1>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+				</div>
+				<div class="footer-col-3">
+					<h3 style="text-align: center;">Download Our App</h3>
+					<ul style="list-style-type: none;">
+						<li>Coupons</li>
+						<li>Blog</li>
+						<li>About Us</li>
+					</ul>
+				</div>
+				<div class="footer-col-4">
+					<h3 style="text-align: center;">Follow Us</h3>
+					<ul style="list-style-type: none;">
+						<li>Facebook</li>
+						<li>Instagram</li>
+						<li>Youtube</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

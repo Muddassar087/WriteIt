@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+
+	<link rel="stylesheet" th:href="@{../css/design.css}">
+	<meta charset="ISO-8859-1">
+	<style type="text/css">
+	::placeholder{
+		color:#ff523b;
+		
+	}
+	input {
+		cursor: default;
+	}
+</style>
+	<title>login - writeIt</title>
+	
+	</head>
+	<body>
+		<div class="container">
+			<div class="navbar" id="nav">
+				<h1 class="nameW">WRITE IT</h1>
+				<nav>
+					<ul>
+						<li><a class='' th:href="@{/}">Home</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Contact</a></li>
+						<li style="background: #ff523b; width:70px;height:30px;
+						border-radius:100px; padding-top:10px;
+						text-align: center; color:white; "><a style="color: white" href="/login">login</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+		<div class='form1-container' id="f">
+			 <div class="form1">
+				<h1 class='heading' style="
+					font-size:30px;
+					text-align:center;
+				">Sign in</h1>
+
+				<div class="input">
+				<span  th:if=${param.error} style="color: red; font-size:20px; font-weight:bold; text-align: center; height:100px; margin-left: 100px;margin-bottom:10px;">Invalid userName password</span>
+				<form th:action=@{/login} method="post">
+						
+					
+						
+						<input type="text" style="margin-top:10px;" required="required" name="username" placeholder="username">
+						<input type="password" required="required" name="password" placeholder="password">
+						
+						<div class='checkbox'>
+							<input class="sub" type="submit" name="" value="SUBMIT" style="
+							width: 200px;
+							text-align: center; 
+							margin-left: 210px;
+							margin-top:10px; 
+							color: white; 
+							background:#ff523b; 
+							padding: 10px 10px;
+							/*padding-top:20px;*/
+							cursor: pointer;">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+	</script>
+</html>
